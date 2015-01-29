@@ -1,6 +1,7 @@
 package marek.autokeuring;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,6 +42,7 @@ public class MainActivity extends ActionBarActivity
 
     public void onNextButtonClick(View v)
     {
+
         DatabaseHelper db = new DatabaseHelper(this, null, null, 1);
 
         CurrentPage++;
@@ -46,12 +50,22 @@ public class MainActivity extends ActionBarActivity
         Content con = db.findProduct(CurrentCategory, CurrentPage);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, APKFragment.newInstance(con._page, con._maxPage, con._content))
+                .replace(R.id.container, APKFragment.newInstance(con._category, con._page, con._maxPage, con._content, con._categoryName))
                 .commit();
     }
 
     public void onPreviousClick(View v)
     {
+        if (CurrentPage == 1)
+        {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, PlaceholderFragment.newInstance(2))
+                    .commit();
+
+            return;
+        }
+
         DatabaseHelper db = new DatabaseHelper(this, null, null, 1);
 
         CurrentPage--;
@@ -59,7 +73,7 @@ public class MainActivity extends ActionBarActivity
         Content con = db.findProduct(CurrentCategory, CurrentPage);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, APKFragment.newInstance(con._page, con._maxPage, con._content))
+                .replace(R.id.container, APKFragment.newInstance(con._category, con._page, con._maxPage, con._content, con._categoryName))
                 .commit();
     }
 
@@ -103,7 +117,7 @@ public class MainActivity extends ActionBarActivity
         Content con = db.findProduct(CurrentCategory, CurrentPage);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, APKFragment.newInstance(con._page, con._maxPage, con._content))
+                .replace(R.id.container, APKFragment.newInstance(con._category, con._page, con._maxPage, con._content, con._categoryName))
                 .commit();
     }
 
@@ -263,17 +277,21 @@ public class MainActivity extends ActionBarActivity
         private static final String ARG_CONTENT_TEXT = "content_text";
         private static final String ARG_PAGE = "page";
         private static final String ARG_MAX_PAGE = "max_page";
+        private static final String ARG_CATEGORY_NAME = "category_name";
+        private static final String ARG_CATEGORY = "category";
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static APKFragment newInstance(int page, int max_page, String content) {
+        public static APKFragment newInstance(int category, int page, int max_page, String content, String category_name) {
             APKFragment fragment = new APKFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_PAGE, page);
+            args.putInt(ARG_CATEGORY, category);
             args.putInt(ARG_MAX_PAGE, max_page);
             args.putString(ARG_CONTENT_TEXT, content);
+            args.putString(ARG_CATEGORY_NAME, category_name);
             fragment.setArguments(args);
             return fragment;
         }
@@ -288,30 +306,81 @@ public class MainActivity extends ActionBarActivity
             int sectionnumber = getArguments().getInt(ARG_SECTION_NUMBER);
 
             int page = getArguments().getInt(ARG_PAGE);
+            int category = getArguments().getInt(ARG_CATEGORY);
             int max_page = getArguments().getInt(ARG_MAX_PAGE);
             String content = getArguments().getString(ARG_CONTENT_TEXT);
+            String categoryName = getArguments().getString(ARG_CATEGORY_NAME);
 
             String pageString = Integer.toString(page) + "/" + Integer.toString(max_page);
             View rootView = inflater.inflate(R.layout.apkcheckstep, container, false);
 
             TextView categorycontent = (TextView)rootView.findViewById(R.id.txtApkCheckStep_Information);
+            TextView txtCategoryName = (TextView)rootView.findViewById(R.id.txtCategory);
             TextView step = (TextView)rootView.findViewById(R.id.txtStep);
+
             Button prevButton = (Button)rootView.findViewById(R.id.btnPrevious);
             Button nextButton = (Button)rootView.findViewById(R.id.btnNext);
-
-            if(page == 1)
-            {
-                prevButton.setEnabled(false);
-            }
 
             if(page == max_page)
             {
                 nextButton.setEnabled(false);
             }
 
+            LinearLayout lin = (LinearLayout)rootView.findViewById(R.id.gallery);
+
+            if(category == 1 && page == 1)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_04));
+                ImageView image2 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_05));
+                ImageView image3 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_06));
+
+                lin.addView(image1);
+                lin.addView(image2);
+                lin.addView(image3);
+            }else if (category == 1 && page == 2)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_01));
+                ImageView image2 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_02));
+
+                lin.addView(image1);
+                lin.addView(image2);
+            }else if (category == 1 && page == 3)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.banden_03));
+
+                lin.addView(image1);
+            }else if (category == 3 && page == 1)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.schade));
+
+                lin.addView(image1);
+            }else if (category == 7 && page == 1)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.gordel));
+                ImageView image2 = getImageview(rootView.getResources().getDrawable(R.drawable.gordel_02));
+
+
+                lin.addView(image1);
+                lin.addView(image2);
+            }else if (category == 7 && page == 2)
+            {
+                ImageView image1 = getImageview(rootView.getResources().getDrawable(R.drawable.voorruit));
+
+                lin.addView(image1);
+            }
+
+            txtCategoryName.setText(categoryName);
             categorycontent.setText(content);
             step.setText(pageString);
             return rootView;
+        }
+
+        private ImageView getImageview(Drawable draw)
+        {
+            ImageView imageView = new ImageView(getActivity());
+            //imageView.setMaxHeight(50);
+            imageView.setImageDrawable(draw);
+            return imageView;
         }
 
         @Override

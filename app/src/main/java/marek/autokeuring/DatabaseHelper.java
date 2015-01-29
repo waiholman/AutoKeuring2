@@ -20,10 +20,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "contentDB.db";
     public static final String TABLE_CONTENT = "content";
 
-    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_ID = "id";
     public static final String COLUMN_CATEGORY_ID= "categoryid";
     public static final String COLUMN_PAGENUMBER = "pagenumber";
     public static final String COLUMN_CONTENT = "content";
+
+    public static final String TABLE_CATEGORY = "category";
+    public static final String COLUMN_CATEGORY_NAME = "categoryname";
 
     private Context context;
 
@@ -115,6 +118,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cursor = db.rawQuery(maxpageQuery, null);
         cursor.moveToFirst();
         product._maxPage = Integer.parseInt(cursor.getString(0));
+
+        String categoryNameQuery = "Select categoryname FROM " + TABLE_CATEGORY + " WHERE " + COLUMN_ID + " =  " + category;
+        cursor = db.rawQuery(categoryNameQuery, null);
+        cursor.moveToFirst();
+        product._categoryName = cursor.getString(0);
 
         db.close();
         return product;

@@ -27,34 +27,34 @@
         android:layout_margin="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Previous"
         android:id="@+id/btnPrevious"
-        android:layout_toStartOf="@+id/txtCategory"
-        android:layout_toEndOf="@+id/txtCategory"
+        android:layout_toStartOf="@+id/txtStep"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:clickable="true"
         android:onClick="onPreviousClick"
         style="@style/button_text"
-        android:background="@drawable/coloredbutton" />
+        android:background="@drawable/coloredbutton"
+        android:layout_toLeftOf="@+id/txtStep" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/btnNext"
-        android:layout_toEndOf="@+id/txtCategory"
-        android:layout_toStartOf="@+id/txtApkCheckStep_Information"
+        android:layout_toEndOf="@+id/txtStep"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:clickable="true"
         android:onClick="onNextButtonClick"
         style="@style/button_text"
-        android:background="@drawable/coloredbutton" />
+        android:background="@drawable/coloredbutton"
+        android:layout_toRightOf="@+id/txtStep" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,13 +63,17 @@
         android:text="1/*"
         android:textColor="#FF121212"
         android:id="@+id/txtStep"
-        android:layout_alignLeft="@+id/txtCategory"
-        android:layout_alignStart="@+id/txtCategory"
-        android:layout_alignRight="@+id/txtCategory"
-        android:layout_alignEnd="@+id/txtCategory"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/btnPrevious"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignLeft="@+id/txtCategory"
+        android:layout_alignRight="@+id/txtCategory" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -89,6 +93,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/gallery"></LinearLayout>
     </HorizontalScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"></LinearLayout>
 
 
 </RelativeLayout>
