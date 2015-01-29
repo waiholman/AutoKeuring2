@@ -4,13 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.SQLDataException;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -34,26 +37,30 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
         this.context = context;
 
+
         copyDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
-//                TABLE_CONTENT + "("
-//                + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_CATEGORY_ID
-//                + " INTEGER," + COLUMN_PAGENUMBER + " INTEGER,"
-//                + COLUMN_CONTENT + " TEXT"
-//                + ")";
-//        db.execSQL(CREATE_PRODUCTS_TABLE);
+        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
+                TABLE_CONTENT + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_CATEGORY_ID
+                + " INTEGER," + COLUMN_PAGENUMBER + " INTEGER,"
+                + COLUMN_CONTENT + " TEXT"
+                + ")";
+        db.execSQL(CREATE_PRODUCTS_TABLE);
 
         copyDatabase();
     }
 
     private void copyDatabase()
     {
+
+
         try
         {
+            getReadableDatabase();
             InputStream myInput = context.getAssets().open(DATABASE_NAME);
 
             String outFileName = DATABASE_PATH + DATABASE_NAME;
@@ -69,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             myOutput.flush();
             myOutput.close();
             myInput.close();
-        }catch(IOException e)
+        }catch(Exception e)
         {
             System.out.println(e.getMessage());
         }
