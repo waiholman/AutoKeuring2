@@ -66,10 +66,37 @@ public class MainActivity extends ActionBarActivity
     public void onCategoryClick(View v)
     {
         DatabaseHelper db = new DatabaseHelper(this, null, null, 1);
-
         if (v == findViewById(R.id.lblCategoryBanden))
         {
             CurrentCategory = 1;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategorySchade))
+        {
+            CurrentCategory = 2;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategoryVerlichting))
+        {
+            CurrentCategory = 3;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategoryDeuren))
+        {
+            CurrentCategory = 4;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategorymotorkap))
+        {
+            CurrentCategory = 5;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategoryUitlaat))
+        {
+            CurrentCategory = 6;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategoryInAuto))
+        {
+            CurrentCategory = 7;
+            CurrentPage = 1;
+        }else if (v == findViewById(R.id.lblCategoryHandrem))
+        {
+            CurrentCategory = 8;
             CurrentPage = 1;
         }
 
@@ -248,7 +275,6 @@ public class MainActivity extends ActionBarActivity
             args.putInt(ARG_MAX_PAGE, max_page);
             args.putString(ARG_CONTENT_TEXT, content);
             fragment.setArguments(args);
-
             return fragment;
         }
 

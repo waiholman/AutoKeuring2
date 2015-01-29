@@ -4,6 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/apkchecklayout"
+    android:background="@drawable/background"
     android:weightSum="1">
 
     <TextView
@@ -11,12 +12,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Pre APK Check Categorieën"
+        android:textColor="#FF121212"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FF121212"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal" />
 
@@ -26,6 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Banden"
         android:id="@+id/lblCategoryBanden"
+        android:textColor="#FF121212"
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
         android:clickable="true"
@@ -34,6 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FF121212"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Schade en carosserie"
         android:id="@+id/lblCategorySchade"
@@ -45,6 +50,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FF121212"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Verlichting"
         android:id="@+id/lblCategoryVerlichting"
@@ -57,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF121212"
         android:text="Deuren en ruiten"
         android:id="@+id/lblCategoryDeuren"
         android:layout_gravity="center_horizontal"
@@ -67,6 +74,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FF121212"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Onder de motorkap"
         android:id="@+id/lblCategorymotorkap"
@@ -77,6 +85,7 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:textColor="#FF121212"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Uitlaat"
@@ -88,6 +97,7 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:textColor="#FF121212"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="In de auto"
@@ -100,6 +110,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FF121212"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Handrem"
         android:id="@+id/lblCategoryHandrem"
