@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Auto Keuring</string>
+    <string name="title_section1">Welkom</string>
+    <string name="title_section2">Pre check</string>
+    <string name="title_section3">Over app</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Welcomemessage">Welkom bij de APK Precheck applicatie, deze applicatie dient als gratis hulpmiddel als u uw personenauto zelf vóór een APK alvast wilt controleren met het idee om eventuele kleine problemen alvast te verhelpen en op te sporen om onaangename verrassingen te voorkomen of geld te besparen op onderhoud van uw auto. De informatie zal op een zo simpel mogelijke manier worden uitgelegd. Houd er rekening mee dat deze check niet alle keuringspunten aanpakt, maar de meest  voorkomende fouten problemen of simpel op te lossen problemen aan de kaak stelt!
+
+Deze applicatie is nog volop in ontwikkeling en zal uitgebreid worden met functionaliteit, daarnaast kunnen er in dit vroege stadium nog problemen voorkomen met de applicatie, wij blijven aan deze applicatie werken om deze te verbeteren en proberen ten minste maandelijks een update uit te brengen! In de eerste plaats zal het gebruik van de applicatie volledig gratis zijn, waarbij later eventueel een uitgebreidere betaalde versie beschikbaar komt.
+
+Eventuele feedback over de applicatie is welkom op 0822878@student.hro.nl !</string>
+
+    <string name="About">V 0.2 (beta)
+\n
+Deze applicatie is nog volop in ontwikkeling en zal uitgebreid worden met functionaliteit, daarnaast kunnen er in dit vroege stadium nog problemen voorkomen met de applicatie, wij blijven aan deze applicatie werken om deze te verbeteren en proberen ten minste maandelijks een update uit te brengen! In de eerste plaats zal het gebruik van de applicatie volledig gratis zijn, waarbij later eventueel een uitgebreidere betaalde versie beschikbaar komt.
+
+De informatie afkomstig van deze applicatie komt uit het openbare document van het RDW met de APK keuring eisen en zijn zo simpel mogelijk uitgelegd.
+
+Eventuele feedback over de applicatie is welkom op 0822878@student.hro.nl !</string>
+</resources>
